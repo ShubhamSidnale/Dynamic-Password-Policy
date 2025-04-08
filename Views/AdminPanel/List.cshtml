@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Model.Models.User>
+
+@{
+    ViewData["Title"] = "Admin List";
+}
+
+<h1>Admin List</h1>
+
+@if(Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label style="font:bold">User Name</label>
+                </th>
+
+                <th>
+                    <label style="font:bold">Created Date</label>
+                </th>
+                <th>
+                    <label style="font:bold">Updated Date</label>
+                </th>
+                <th>
+                    <label style="font:bold">Is Active</label>
+                </th>
+                <td>
+                    <label style="font:bold">Action</label>
+                </td>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UpdatedDate)
+                    </td>
+                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsLocked)
+                    </td>
+
+                   
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Guid">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Guid">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Guid">Delete</a>
+                    </td>
+                </tr>
+            }
+           
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Data not Found</p>
+
+}
+

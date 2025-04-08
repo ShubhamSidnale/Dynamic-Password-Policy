@@ -1,0 +1,10 @@
+﻿@model Model.Models.User
+
+@section Scripts {
+    <script>
+        var message = '@TempData["Message"]'; // Ensure it's properly enclosed in quotes
+        if (message && message !== 'null' && message !== '') {
+            Swal.fire('Notification', message, 'success'); // 'success' should be lowercase
+        }
+    </script>
+}

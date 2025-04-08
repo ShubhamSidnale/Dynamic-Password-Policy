@@ -1,0 +1,40 @@
+﻿@model Model.Models.User
+
+
+@section Scripts {
+    <script>
+        var message = '@TempData["Message"]'; // Ensure it's properly enclosed in quotes
+        if (message && message !== 'null' && message !== '') {
+            Swal.fire('Notification', message, 'success'); // 'success' should be lowercase
+        }
+    </script>
+}
+
+
+<h1>Login User</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="User" method="post" asp-action="Login" class="form-horizontal" role="form" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" id="username" required/>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            </br>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" asp-controller="User"  asp-action="Login" id="submitBtn" />
+            </div>
+        </form>
+    </div>
+</div>
+
